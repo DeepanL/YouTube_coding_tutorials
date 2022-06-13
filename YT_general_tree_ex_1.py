@@ -21,32 +21,18 @@ class TreeNode:
 
     def print_tree(self, format):
         if format == 'both':
-            spaces = ' ' * self.get_level() * 3
-            prefix = spaces + "|__" if self.parent else ""
-            print(prefix+ self.data[0] + " ({})".format(self.data[1]))
-        # if len(self.children) > 0:
-            if self.children:
-                for child in self.children:
-            # print(child.data)
-                    child.print_tree(format)
+            value = self.data[0] + " ({})".format(self.data[1])
         elif format == 'name':
-            spaces = ' ' * self.get_level() * 3
-            prefix = spaces + "|__" if self.parent else ""
-            print(prefix+ self.data[0])
-        # if len(self.children) > 0:
-            if self.children:
-                for child in self.children:
-            # print(child.data)
-                    child.print_tree(format)
+            value = self.data[0]
         elif format == 'designation':
-            spaces = ' ' * self.get_level() * 3
-            prefix = spaces + "|__" if self.parent else ""
-            print(prefix+ self.data[1])
-        # if len(self.children) > 0:
-            if self.children:
-                for child in self.children:
-            # print(child.data)
-                    child.print_tree(format)
+            value = self.data[1]
+        spaces = ' ' * self.get_level() * 3
+        prefix = spaces + "|__" if self.parent else ""
+        print(prefix+ value)
+        if self.children:
+            for child in self.children:
+                child.print_tree(format)
+        
 
 def build_management_tree():
     root = TreeNode("Nilupul", "CEO")
@@ -74,6 +60,6 @@ def build_management_tree():
 
 if __name__ == '__main__':
     root_node = build_management_tree()
-    # root_node.print_tree("name") # prints only name hierarchy
+    root_node.print_tree("name") # prints only name hierarchy
     root_node.print_tree("designation") # prints only designation hierarchy
-    # root_node.print_tree("both") # prints both (name and designation) hierarchy
+    root_node.print_tree("both") # prints both (name and designation) hierarchy
