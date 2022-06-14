@@ -1,6 +1,3 @@
-from tkinter.tix import Tree
-
-
 class TreeNode:
     def __init__(self, name, designation):
         self.data = name, designation
